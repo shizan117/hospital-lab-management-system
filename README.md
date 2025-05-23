@@ -138,5 +138,4 @@ If you face any issues or have feature requests, feel free to [open an issue](ht
 
 ---
 
-Would you like me to export this to a downloadable `README.md` file or include details for Docker, GitHub Actions CI, or environment-specific configuration?
-```
+
