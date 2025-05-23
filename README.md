@@ -1,7 +1,3 @@
-Here's a polished, visually attractive, and well-structured version of your `README.md` file that looks professional and clearly communicates the purpose and functionality of your Laravel diagnostic center system:
-
----
-
 ````markdown
 # 🏥 Medical Diagnostic Center System
 
@@ -46,7 +42,7 @@ A modern **Laravel-based web application** for hospital and diagnostic center ma
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/diagnostic-lab.git
+git clone  https://github.com/shizan117/hospital-lab-management-system.git
 cd diagnostic-lab
 ````
 
@@ -129,13 +125,4 @@ Password: password
 This project is open-source and licensed under the **MIT License**.
 
 ---
-
-## 🙋 Need Help?
-
-If you face any issues or have feature requests, feel free to [open an issue](https://github.com/yourusername/diagnostic-lab/issues) or contact the maintainer.
-
-```
-
----
-
 
