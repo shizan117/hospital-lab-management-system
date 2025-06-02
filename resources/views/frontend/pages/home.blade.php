@@ -32,7 +32,7 @@
                 <p class="lead mb-4" style="opacity: 0.95;">আধুনিক প্রযুক্তি ও দক্ষ প্যাথলজিস্ট দ্বারা পরিচালিত</p>
 
                 <div class="d-flex justify-content-center justify-content-lg-start gap-3 flex-wrap">
-                    <a href="services.html" class="btn btn-light btn-lg px-4 shadow-sm">Our Services</a>
+                    <a href="{{route('services')}}" class="btn btn-light btn-lg px-4 shadow-sm">Our Services</a>
                     <a href="contact.html#appointment" class="btn btn-outline-light btn-lg px-4">Book Test</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     </div>
                     <h3>Pathology Tests</h3>
                     <p class="text-muted">Complete blood tests, urine analysis, biochemistry, and microbiology services.</p>
-                    <a href="services.html#pathology" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    <a href="{{route('services')}}#pathology" class="btn btn-outline-primary mt-auto">Learn More</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -65,7 +65,7 @@
                     </div>
                     <h3>Radiology</h3>
                     <p class="text-muted">Digital X-ray, ultrasound, and other imaging services with expert radiologists.</p>
-                    <a href="services.html#radiology" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    <a href="{{route('services')}}#radiology" class="btn btn-outline-primary mt-auto">Learn More</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -75,7 +75,7 @@
                     </div>
                     <h3>Specialized Tests</h3>
                     <p class="text-muted">Advanced testing including hormonal assays, tumor markers, and genetic tests.</p>
-                    <a href="services.html#specialized" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    <a href="{{route('services')}}#specialized" class="btn btn-outline-primary mt-auto">Learn More</a>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                     <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Affordable pricing</li>
                     <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Home sample collection available</li>
                 </ul>
-                <a href="about.html" class="btn btn-primary mt-3">Learn More About Us</a>
+                <a href="{{route('about')}}" class="btn btn-primary mt-3">Learn More About Us</a>
             </div>
             <div class="col-lg-6">
                 <img src="{{asset('frontend_assets')}}/img/lab-interior.jpg" alt="Lab Interior" class="img-fluid rounded shadow">

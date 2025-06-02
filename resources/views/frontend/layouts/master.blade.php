@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('frontend_assets')}}/css/style.css">
+    <link rel="icon" href="{{ asset('frontend_assets')}}/img/logo.png " type="image/png">
+
 </head>
 <body>
 <!-- header -->
@@ -27,6 +29,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JS -->
 <script src="{{asset('frontend_assets')}}/js/main.js"></script>
+@yield('script')
 </body>
 </html>
 
