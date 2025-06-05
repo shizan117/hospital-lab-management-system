@@ -215,7 +215,7 @@
                                     <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
                                     <h5 class="mb-1">Book an Appointment</h5>
                                     <p class="text-muted small mb-3">Consult with our specialists</p>
-                                    <a href="contact.html#appointment" class="btn btn-primary w-100 fw-bold">Book Now</a>
+                                    <a href="{{route('contact')}}#appointment" class="btn btn-primary w-100 fw-bold">Book Now</a>
                                 </div>
                             </div>
 

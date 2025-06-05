@@ -15,20 +15,20 @@
             <div class="col-lg-2 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
-                    <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About</a></li>
-                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none">Services</a></li>
-                    <li class="mb-2"><a href="doctors.html" class="text-white-50 text-decoration-none">Doctors</a></li>
-                    <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    <li class="mb-2"><a href="{{route('home')}}" class="text-white-50 text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="{{route('about')}}" class="text-white-50 text-decoration-none">About</a></li>
+                    <li class="mb-2"><a href="{{route('services')}}" class="text-white-50 text-decoration-none">Services</a></li>
+                    <li class="mb-2"><a href="{{route('doctors')}}" class="text-white-50 text-decoration-none">Doctors</a></li>
+                    <li class="mb-2"><a href="{{route('contact')}}" class="text-white-50 text-decoration-none">Contact</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Our Services</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none">Pathology Tests</a></li>
-                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none">Radiology</a></li>
-                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none">Specialized Tests</a></li>
-                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none">Home Collection</a></li>
+                    <li class="mb-2"><a href="{{route('services')}}" class="text-white-50 text-decoration-none">Pathology Tests</a></li>
+                    <li class="mb-2"><a href="{{route('services')}}" class="text-white-50 text-decoration-none">Radiology</a></li>
+                    <li class="mb-2"><a href="{{route('services')}}" class="text-white-50 text-decoration-none">Specialized Tests</a></li>
+                    <li class="mb-2"><a href="{{route('services')}}" class="text-white-50 text-decoration-none">Home Collection</a></li>
                 </ul>
             </div>
             <div class="col-lg-3">

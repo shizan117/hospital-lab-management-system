@@ -22,5 +22,15 @@ class HomeController extends Controller
     public function doctors(){
         return view('frontend.pages.doctors');
     }
+     public function management(){
+            return view('frontend.pages.management');
+     }
+     public function staff(){
+                return view('frontend.pages.staff');
+     }
+
+     public function contact(){
+            return view('frontend.pages.contact');
+    }
 
 }

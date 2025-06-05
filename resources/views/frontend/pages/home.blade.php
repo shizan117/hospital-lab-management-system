@@ -13,8 +13,7 @@
 
             <!-- Left Column: Contact Info -->
             <div class="col-lg-5 mb-5 mb-lg-0"style="
-            margin-top: 9px;
-        ">
+            margin-top: 5px;">
                 <div class="bg-white text-dark rounded-4 p-4 shadow-sm">
                     <h5 class="fw-bold mb-3 text-center">যোগাযোগ করুন</h5>
                     <p class="mb-2"><strong>📍 ঠিকানা:</strong> মেডিকেয়ার ডায়াগনস্টিক ল্যাব, গোয়ালন্দ, রাজবাড়ী</p>
@@ -33,7 +32,7 @@
 
                 <div class="d-flex justify-content-center justify-content-lg-start gap-3 flex-wrap">
                     <a href="{{route('services')}}" class="btn btn-light btn-lg px-4 shadow-sm">Our Services</a>
-                    <a href="contact.html#appointment" class="btn btn-outline-light btn-lg px-4">Book Test</a>
+                    <a href="{{route('contact')}}#appointment" class="btn btn-outline-light btn-lg px-4">Book Test</a>
                 </div>
             </div>
         </div>

@@ -297,7 +297,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <a href="contact.html#appointment" class="btn btn-primary me-2">Book Home Collection</a>
+                        <a href="{{route('contact')}}#appointment" class="btn btn-primary me-2">Book Home Collection</a>
                         <a href="tel:+91XXXXXXXXXX" class="btn btn-outline-primary">Call for Home Collection</a>
                     </div>
                 </div>
@@ -376,7 +376,7 @@
             </div>
             <div class="text-center mt-4">
                 <p class="text-muted">*Prices are subject to change. Please confirm before booking.</p>
-                <a href="contact.html" class="btn btn-primary">Contact for More Tests</a>
+                <a href="{{route('contact')}}" class="btn btn-primary">Contact for More Tests</a>
             </div>
         </div>
     </section>

@@ -23,9 +23,9 @@
                 </li>
 
                 <!-- New Blog Nav Item -->
-                <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="blog.html">Blog</a>--}}
+{{--                </li>--}}
 
                 <!-- Management Dropdown -->
                 <li class="nav-item dropdown">
@@ -33,17 +33,17 @@
                         Management
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="managementDropdown">
-                        <li><a class="dropdown-item" href="staff.html">Management</a></li>
-                        <li><a class="dropdown-item" href="staff.html">Staff</a></li>
+                        <li><a class="dropdown-item" href="{{route('management')}}">Management</a></li>
+                        <li><a class="dropdown-item" href="{{route('staff')}}">Staff</a></li>
                         <li><a class="dropdown-item" href="shareholders.html">Shareholders</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="{{route('contact')}}">Contact</a>
                 </li>
             </ul>
-            <a href="contact.html#appointment" class="btn btn-primary ms-lg-3">Book Appointment</a>
+            <a href="{{route('contact')}}#appointment" class="btn btn-primary ms-lg-3">Book Appointment</a>
         </div>
     </div>
 </nav>
