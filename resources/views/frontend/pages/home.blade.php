@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section text-white position-relative" style="background: linear-gradient(120deg, #0ea5e9, #0284c7); overflow: hidden; padding: 60px 0;">
+<section class="hero-section text-white position-relative" style="background: linear-gradient(120deg, #0ea5e9, #0284c7); overflow: hidden; padding: 15px 0;">
     <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: rgba(0, 0, 0, 0.05); border-radius: 50%; z-index: 0;"></div>
     <div style="position: absolute; bottom: -100px; right: -100px; width: 300px; height: 300px; background: rgba(0, 0, 0, 0.05); border-radius: 50%; z-index: 0;"></div>
 
@@ -34,19 +34,7 @@
                     <a href="{{route('pharmacy')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Pharmacy</a>
                     <a href="{{route('contact')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Book Test</a>
 
-                    <style>
-                        .btn-light:hover {
-                            background: linear-gradient(145deg, #e6e6e6, #ffffff);
-                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                            transform: translateY(-2px);
-                        }
-                        .btn-outline-light:hover {
-                            background: #ffffff;
-                            color: #1a73e8;
-                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                            transform: translateY(-2px);
-                        }
-                    </style>
+
                 </div>
             </div>
         </div>
@@ -54,14 +42,14 @@
 </section>
 
 <!-- Services Preview Section -->
-<section class="py-5 bg-light">
+<section class="py-3 bg-light">
     <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-center ">
             <h2 class="section-title">Our Diagnostic Services</h2>
             <p class="lead text-muted">Comprehensive testing for accurate diagnosis</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card text-center p-4 h-100">
                     <div class="service-icon">
                         <i class="fas fa-vial"></i>
@@ -71,7 +59,7 @@
                     <a href="{{route('services')}}#pathology" class="btn btn-outline-primary mt-auto">Learn More</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card text-center p-4 h-100">
                     <div class="service-icon">
                         <i class="fas fa-x-ray"></i>
@@ -81,7 +69,7 @@
                     <a href="{{route('services')}}#radiology" class="btn btn-outline-primary mt-auto">Learn More</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card text-center p-4 h-100">
                     <div class="service-icon">
                         <i class="fas fa-dna"></i>
@@ -94,6 +82,29 @@
         </div>
     </div>
 </section>
+
+<style>
+    @media (max-width: 767.98px) {
+        .col-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+            padding: 5px; /* Reduced padding for mobile */
+        }
+        .card {
+            margin-bottom: 10px; /* Ensure cards don't overlap */
+        }
+        .card h3 {
+            font-size: 1rem; /* Adjust font size for smaller screens */
+        }
+        .card p {
+            font-size: 0.9rem; /* Adjust paragraph font size */
+        }
+        .btn-outline-primary {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
 
 <!-- Why Choose Us Section -->
 <section class="py-5">
@@ -237,3 +248,20 @@
     </div>
 </section>
 @endsection
+
+
+@section('style')
+    <style>
+        .btn-light:hover {
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        .btn-outline-light:hover {
+            background: #ffffff;
+            color: #1a73e8;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+    @endsection
