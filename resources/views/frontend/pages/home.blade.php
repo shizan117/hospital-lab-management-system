@@ -12,8 +12,7 @@
         <div class="row align-items-center justify-content-between flex-wrap-reverse">
 
             <!-- Left Column: Contact Info -->
-            <div class="col-lg-5 mb-5 mb-lg-0"style="
-            margin-top: 5px;">
+            <div class="col-lg-5 mb-5 mb-lg-0"style="margin-top: 5px;">
                 <div class="bg-white text-dark rounded-4 p-4 shadow-sm">
                     <h5 class="fw-bold mb-3 text-center">যোগাযোগ করুন</h5>
                     <p class="mb-2"><strong>📍 ঠিকানা:</strong> মেডিকেয়ার ডায়াগনস্টিক ল্যাব, গোয়ালন্দ, রাজবাড়ী</p>
@@ -25,12 +24,12 @@
 
             <!-- Right Column: Hero Text -->
             <div class="col-lg-6 text-center text-lg-start">
-                <h5 class="mb-3 fw-semibold mb-5">গোয়ালন্দে মানসম্মত ডায়াগনস্টিক সেবা</h5>
+                <h5 class="mb-3 fw-semibold mb-2">গোয়ালন্দে মানসম্মত ডায়াগনস্টিক সেবা</h5>
                 <h3 class="mb-4" style="font-size: 1.2rem; color: rgba(255,255,255,0.9);">স্বাস্থ্য সেবায় আপনার আস্থায়</h3>
                 <h1 class="display-5 fw-bold mb-5" style="color: white;">গোয়ালন্দ মেডিকেয়ার ডায়াগনস্টিক ল্যাব</h1>
                 <p class="lead mb-4" style="opacity: 0.95;">আধুনিক প্রযুক্তি ও দক্ষ প্যাথলজিস্ট দ্বারা পরিচালিত</p>
 
-                <div class="d-flex justify-content-center justify-content-lg-start gap-3 flex-wrap">
+                <div class="d-flex justify-content-center justify-content-lg-start gap-3 flex-wrap mb-3">
                     <a href="{{route('ambulance')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Ambulance</a>
                     <a href="{{route('pharmacy')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Pharmacy</a>
                     <a href="{{route('contact')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Book Test</a>
