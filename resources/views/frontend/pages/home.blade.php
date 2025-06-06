@@ -31,8 +31,23 @@
                 <p class="lead mb-4" style="opacity: 0.95;">আধুনিক প্রযুক্তি ও দক্ষ প্যাথলজিস্ট দ্বারা পরিচালিত</p>
 
                 <div class="d-flex justify-content-center justify-content-lg-start gap-3 flex-wrap">
-                    <a href="{{route('services')}}" class="btn btn-light btn-lg px-4 shadow-sm">Our Services</a>
-                    <a href="{{route('contact')}}#appointment" class="btn btn-outline-light btn-lg px-4">Book Test</a>
+                    <a href="{{route('ambulance')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Ambulance</a>
+                    <a href="{{route('pharmacy')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Pharmacy</a>
+                    <a href="{{route('contact')}}" class="btn btn-light btn-md px-4 py-2 shadow-sm" style="background: linear-gradient(145deg, #ffffff, #e6e6e6); color: #1a73e8; font-weight: 500; transition: all 0.3s ease;">Book Test</a>
+
+                    <style>
+                        .btn-light:hover {
+                            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                            transform: translateY(-2px);
+                        }
+                        .btn-outline-light:hover {
+                            background: #ffffff;
+                            color: #1a73e8;
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                            transform: translateY(-2px);
+                        }
+                    </style>
                 </div>
             </div>
         </div>

@@ -35,5 +35,8 @@ class HomeController extends Controller
      public function contact(){
             return view('frontend.pages.contact');
     }
+    public function working(){
+            return view('frontend.pages.working');
+    }
 
 }
