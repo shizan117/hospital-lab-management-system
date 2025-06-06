@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu" aria-labelledby="managementDropdown">
                         <li><a class="dropdown-item" href="{{route('management')}}">Management</a></li>
                         <li><a class="dropdown-item" href="{{route('staff')}}">Staff</a></li>
-                        <li><a class="dropdown-item" href="shareholders.html">Shareholders</a></li>
+                        <li><a class="dropdown-item" href="{{route('shareholders')}}">Shareholders</a></li>
                     </ul>
                 </li>
 

@@ -123,7 +123,7 @@
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                     </div>
-                    <p class="mb-4">"The most reliable diagnostic center in Goalanda. I always get my tests done here. The staff is very professional and helpful."</p>
+                    <p class="mb-4">"গোলন্দার সবচেয়ে নির্ভরযোগ্য ডায়াগনস্টিক সেন্টার। আমি সবসময় এখানে আমার পরীক্ষা করাই। কর্মীরা খুব পেশাদার এবং সহায়ক।"</p>
                     <h5>Rahul Sharma</h5>
                     <p class="text-muted small">Regular Patient</p>
                 </div>
@@ -138,7 +138,7 @@
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                     </div>
-                    <p class="mb-4">"Accurate results and quick reporting. The home sample collection service is a lifesaver for elderly patients like me."</p>
+                    <p class="mb-4">"নির্ভুল ফলাফল এবং দ্রুত রিপোর্টিং। আমার মতো বয়স্ক রোগীদের জন্য হোম স্যাম্পল সংগ্রহ পরিষেবা একটি জীবন রক্ষাকারী।"</p>
                     <h5>Sunita Devi</h5>
                     <p class="text-muted small">Senior Citizen</p>
                 </div>
@@ -153,7 +153,7 @@
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star-half-alt text-warning"></i>
                     </div>
-                    <p class="mb-4">"The doctors explained my test reports in detail. I appreciate their transparency and commitment to patient care."</p>
+                    <p class="mb-4">"ডাক্তাররা আমার পরীক্ষার রিপোর্ট বিস্তারিতভাবে ব্যাখ্যা করেছেন। আমি তাদের স্বচ্ছতা এবং রোগীর যত্নের প্রতি অঙ্গীকারের প্রশংসা করি।"</p>
                     <h5>Amit Kumar</h5>
                     <p class="text-muted small">Diabetes Patient</p>
                 </div>

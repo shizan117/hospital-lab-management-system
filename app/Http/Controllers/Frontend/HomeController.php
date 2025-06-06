@@ -23,10 +23,13 @@ class HomeController extends Controller
         return view('frontend.pages.doctors');
     }
      public function management(){
-            return view('frontend.pages.management');
+        return view('frontend.pages.management');
      }
      public function staff(){
-                return view('frontend.pages.staff');
+         return view('frontend.pages.staff');
+     }
+     public function shareholders(){
+        return view('frontend.pages.shareholders');
      }
 
      public function contact(){
