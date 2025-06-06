@@ -36,7 +36,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="destination" class="form-label">Destination</label>
-                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Example: Rajbari Sadar Hospital" required>
+                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Example: Medicare Diagnostic Lab Hospital" required>
                             </div>
                             <div class="mb-3">
                                 <label for="ambulance_type" class="form-label">Ambulance Type</label>
