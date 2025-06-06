@@ -25,3 +25,18 @@ Route::get('/management', [HomeController::class, 'management'])->name('manageme
 Route::get('/staff', [HomeController::class, 'staff'])->name('staff');
 Route::get('/shareholders', [HomeController::class, 'shareholders'])->name('shareholders');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('backend.pages.dashboard');
+    })->name('admin.dashboard');
+    Route::get('/services', function () {})->name('admin.services');
+    Route::get('/ambulance', function () {})->name('admin.ambulance');
+    Route::get('/pharmacy', function () {})->name('admin.pharmacy');
+    Route::get('/users', function () {})->name('admin.users');
+    Route::get('/staff', function () {})->name('admin.staff');
+    Route::get('/shareholders', function () {})->name('admin.shareholders');
+    Route::get('/settings', function () {})->name('admin.settings');
+    Route::post('/logout', function () {})->name('admin.logout');
+    Route::get('/support', function () {})->name('admin.support');
+});
