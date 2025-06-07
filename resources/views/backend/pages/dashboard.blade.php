@@ -1,54 +1,7 @@
 @extends('backend.layouts.master')
 @section('title', 'Admin Dashboard | Medicare Diagnostic Lab')
 @section('content')
-    <style>
-        /*.pc-content {*/
-        /*    background: linear-gradient(135deg, #F7F9FC, #EDEEF1) !important;*/
-        /*}*/
-        .card {
-            /*background-color: #FFF8E7 !important;*/
-            border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        }
-        .text-muted {
-            color: #7A7A7A !important;
-        }
-        /*.text-primary {*/
-        /*    color: #D4A373 !important;*/
-        /*}*/
-        .text-success {
-            color: #50C878 !important;
-        }
-        .text-warning {
-            color: #F1C40F !important;
-        }
-        .text-danger {
-            color: #E74C3C !important;
-        }
-        .badge.bg-light-primary {
-            background-color: rgba(212, 163, 115, 0.1) !important;
-            /*color: #D4A373 !important;*/
-            /*border-color: #D4A373 !important;*/
-        }
-        .badge.bg-light-success {
-            background-color: rgba(80, 200, 120, 0.1) !important;
-            color: #50C878 !important;
-            border-color: #50C878 !important;
-        }
-        .badge.bg-light-warning {
-            background-color: rgba(241, 196, 15, 0.1) !important;
-            color: #F1C40F !important;
-            border-color: #F1C40F !important;
-        }
-        .badge.bg-light-danger {
-            background-color: rgba(231, 76, 60, 0.1) !important;
-            color: #E74C3C !important;
-            border-color: #E74C3C !important;
-        }
-        .list-group-item {
-            background-color: transparent !important;
-            color: #4A4A4A !important;
-        }
-    </style>
+
     <div class="pc-container">
         <div class="pc-content">
             <!-- [ breadcrumb ] start -->
@@ -68,7 +21,17 @@
                 </div>
             </div>
             <!-- [ breadcrumb ] end -->
-            <!-- [ Main Content ] start -->
+
+            <h1>Welcome, {{ Auth::user()->name }}</h1>
+
+            @if(Auth::user()->user_type === 'admin')
+                <p>You are logged in as <strong>Admin</strong>.</p>
+            @elseif(Auth::user()->user_type === 'staff')
+                <p>You are logged in as <strong>Staff</strong>.</p>
+        @endif
+
+
+        <!-- [ Main Content ] start -->
             <div class="row">
                 <!-- [ sample-page ] start -->
                 <div class="col-md-6 col-xl-3">
@@ -295,4 +258,55 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('style')
+    <style>
+        /*.pc-content {*/
+        /*    background: linear-gradient(135deg, #F7F9FC, #EDEEF1) !important;*/
+        /*}*/
+        .card {
+            /*background-color: #FFF8E7 !important;*/
+            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+        .text-muted {
+            color: #7A7A7A !important;
+        }
+        /*.text-primary {*/
+        /*    color: #D4A373 !important;*/
+        /*}*/
+        .text-success {
+            color: #50C878 !important;
+        }
+        .text-warning {
+            color: #F1C40F !important;
+        }
+        .text-danger {
+            color: #E74C3C !important;
+        }
+        .badge.bg-light-primary {
+            background-color: rgba(212, 163, 115, 0.1) !important;
+            /*color: #D4A373 !important;*/
+            /*border-color: #D4A373 !important;*/
+        }
+        .badge.bg-light-success {
+            background-color: rgba(80, 200, 120, 0.1) !important;
+            color: #50C878 !important;
+            border-color: #50C878 !important;
+        }
+        .badge.bg-light-warning {
+            background-color: rgba(241, 196, 15, 0.1) !important;
+            color: #F1C40F !important;
+            border-color: #F1C40F !important;
+        }
+        .badge.bg-light-danger {
+            background-color: rgba(231, 76, 60, 0.1) !important;
+            color: #E74C3C !important;
+            border-color: #E74C3C !important;
+        }
+        .list-group-item {
+            background-color: transparent !important;
+            color: #4A4A4A !important;
+        }
+    </style>
 @endsection

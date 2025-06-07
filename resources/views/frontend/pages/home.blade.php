@@ -83,28 +83,7 @@
     </div>
 </section>
 
-<style>
-    @media (max-width: 767.98px) {
-        .col-4 {
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%;
-            padding: 5px; /* Reduced padding for mobile */
-        }
-        .card {
-            margin-bottom: 10px; /* Ensure cards don't overlap */
-        }
-        .card h3 {
-            font-size: 1rem; /* Adjust font size for smaller screens */
-        }
-        .card p {
-            font-size: 0.9rem; /* Adjust paragraph font size */
-        }
-        .btn-outline-primary {
-            padding: 6px 12px;
-            font-size: 0.9rem;
-        }
-    }
-</style>
+
 
 <!-- Why Choose Us Section -->
 <section class="py-5">
@@ -251,6 +230,28 @@
 
 
 @section('style')
+    <style>
+        @media (max-width: 767.98px) {
+            .col-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+                padding: 5px; /* Reduced padding for mobile */
+            }
+            .card {
+                margin-bottom: 10px; /* Ensure cards don't overlap */
+            }
+            .card h3 {
+                font-size: 1rem; /* Adjust font size for smaller screens */
+            }
+            .card p {
+                font-size: 0.9rem; /* Adjust paragraph font size */
+            }
+            .btn-outline-primary {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
     <style>
         .btn-light:hover {
             background: linear-gradient(145deg, #e6e6e6, #ffffff);

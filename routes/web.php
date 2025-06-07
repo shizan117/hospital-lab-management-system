@@ -40,3 +40,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout', function () {})->name('admin.logout');
     Route::get('/support', function () {})->name('admin.support');
 });
+Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('backend.pages.dashboard');
+    })->name('dashboard');
+});
+

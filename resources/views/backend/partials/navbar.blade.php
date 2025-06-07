@@ -111,7 +111,17 @@
                                     <h6 class="mb-1">Admin</h6>
                                     <span>Administrator</span>
                                 </div>
-                                <a href="{{ route('admin.logout') }}" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
+
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="pc-head-link bg-transparent">
+                                    <i class="ti ti-power text-danger"></i></a>
+
+
+
                             </div>
                         </div>
                         <ul class="nav drp-tabs nav-fill nav-tabs" id="mydrpTab" role="tablist">
@@ -144,10 +154,15 @@
                                     <i class="ti ti-wallet"></i>
                                     <span>Billing</span>
                                 </a>
-                                <a href="{{ route('admin.logout') }}" class="dropdown-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item">
                                     <i class="ti ti-power"></i>
                                     <span>Logout</span>
                                 </a>
+
                             </div>
                             <div class="tab-pane fade" id="drp-tab-2" role="tabpanel" aria-labelledby="drp-t2" tabindex="0">
                                 <a href="#!" class="dropdown-item">

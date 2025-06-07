@@ -21,6 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
+        'phone',
+        'otp_code',
+        'otp_expires_at',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'otp_expires_at' => 'datetime',
     ];
 
     /**
@@ -38,7 +47,5 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+
 }
