@@ -9,9 +9,10 @@
     <meta name="description" content="Medicare Diagnostic Lab Admin Dashboard">
     <meta name="keywords" content="Medicare, Dashboard, Admin Template, Bootstrap 5">
     <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="{{ asset('backend_assets/images/favicon.svg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('backend_assets/images/logo.png') }}" type="image/x-icon">
     <!-- [Google Font] Family -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
     <!-- [Tabler Icons] -->

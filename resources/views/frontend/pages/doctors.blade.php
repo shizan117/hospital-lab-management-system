@@ -4,7 +4,6 @@
 @endsection
 @section('content')
     <style>
-
         .doctor-tabs {
             position: sticky;
             top: 100px;
@@ -76,133 +75,26 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="all-doctors">
                             <div class="row g-3">
-                                <!-- Doctor Card Template -->
-                                <!-- Repeat for each doctor below -->
-
-                                <!-- Doctor 1 -->
-                                <div class="col-md-6 col-lg-4" data-category="pathology">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor1.jpg" class="card-img-top doctor-img" alt="Dr. Rahman" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. A. Rahman</h6>
-                                            <span class="badge bg-primary mb-1">Pathologist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">MD Pathology, 15 years experience</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Clinical pathology & lab management.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <!-- Dynamic Doctor Cards -->
+                                @foreach ($doctors as $doctor)
+                                    <div class="col-md-6 col-lg-4" data-category="{{ $doctor->specialty }}">
+                                        <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
+                                            <img src="{{ asset('frontend_assets/img/' . ($doctor->image ?: 'doctor1.jpg')) }}" class="card-img-top doctor-img" alt="{{ $doctor->name }}" style="height: 180px; object-fit: cover;">
+                                            <div class="card-body py-2 px-3">
+                                                <h6 class="card-title mb-1">{{ $doctor->name }}</h6>
+                                                <span class="badge specialty-badge mb-1">{{ $doctor->specialty }}</span>
+                                                <p class="card-text text-muted mb-1" style="font-size: 13px;">{{ $doctor->qualification }}, {{ $doctor->experience }} years experience</p>
+                                                <p class="card-text mb-2" style="font-size: 13px;">{{ $doctor->description }}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Doctor 2 -->
-                                <div class="col-md-6 col-lg-4" data-category="radiology">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor2.jpg" class="card-img-top doctor-img" alt="Dr. Khan" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. S. Khan</h6>
-                                            <span class="badge bg-primary mb-1">Radiologist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">DMRD, 12 years experience</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Diagnostic imaging & intervention.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Doctor 3 -->
-                                <div class="col-md-6 col-lg-4" data-category="microbiology">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor3.jpg" class="card-img-top doctor-img" alt="Dr. Chowdhury" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. M. Chowdhury</h6>
-                                            <span class="badge bg-primary mb-1">Microbiologist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">PhD Microbiology, 10 yrs</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Infectious diseases & testing.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="far fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Doctor 4 -->
-                                <div class="col-md-6 col-lg-4" data-category="biochemistry">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor4.jpg" class="card-img-top doctor-img" alt="Dr. Akhtar" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. N. Akhtar</h6>
-                                            <span class="badge bg-primary mb-1">Biochemist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">MSc Biochem, 8 yrs</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Metabolic & lab disorders expert.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Doctor 5 -->
-                                <div class="col-md-6 col-lg-4" data-category="pathology">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor5.jpg" class="card-img-top doctor-img" alt="Dr. Begum" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. F. Begum</h6>
-                                            <span class="badge bg-primary mb-1">Pathologist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">MD Pathology, 7 yrs</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Hematopathology specialist.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Doctor 6 -->
-                                <div class="col-md-6 col-lg-4" data-category="radiology">
-                                    <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
-                                        <img src="{{asset('frontend_assets')}}/img/doctor6.jpg" class="card-img-top doctor-img" alt="Dr. Ahmed" style="height: 180px; object-fit: cover;">
-                                        <div class="card-body py-2 px-3">
-                                            <h6 class="card-title mb-1">Dr. R. Ahmed</h6>
-                                            <span class="badge bg-primary mb-1">Radiologist</span>
-                                            <p class="card-text text-muted mb-1" style="font-size: 13px;">DMRD, 5 yrs</p>
-                                            <p class="card-text mb-2" style="font-size: 13px;">Neuro & MSK imaging expert.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
-                                                <div class="text-primary small">
-                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="far fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div> <!-- /.row -->
                         </div> <!-- /.tab-pane -->
                     </div> <!-- /.tab-content -->
-
                 </div>
 
                 <!-- Doctor Categories Sidebar -->
@@ -215,7 +107,7 @@
                                     <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
                                     <h5 class="mb-1">Book an Appointment</h5>
                                     <p class="text-muted small mb-3">Consult with our specialists</p>
-                                    <a href="{{route('contact')}}#appointment" class="btn btn-primary w-100 fw-bold">Book Now</a>
+                                    <a href="{{ route('contact') }}#appointment" class="btn btn-primary w-100 fw-bold">Book Now</a>
                                 </div>
                             </div>
 
@@ -243,7 +135,6 @@
                                         <a class="nav-link border rounded text-center py-2" href="#" data-filter="cardiology">Cardiologists</a>
                                     </li>
                                 </ul>
-
                             </div>
                         </div>
                     </div>
@@ -251,9 +142,7 @@
             </div>
         </div>
     </section>
-
 @endsection
-
 
 @section('script')
     <script>
@@ -284,6 +173,4 @@
             });
         });
     </script>
-
 @endsection
-

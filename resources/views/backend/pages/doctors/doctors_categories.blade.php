@@ -1,0 +1,71 @@
+@extends('backend.layouts.master')
+@section('title', 'Doctor Categories | Medicare Diagnostic Lab')
+
+@section('content')
+    <div class="pc-container">
+        <div class="pc-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Doctor Categories</h4>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                    <i class="fas fa-plus"></i> Add Category
+                </button>
+            </div>
+
+            {{-- Table List --}}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">All Categories</h5>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Category Name</th>
+                            <th>Created At</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse ($categories as $key => $category)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->created_at->format('d M Y') }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="text-center">No categories found.</td>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {{-- Modal for Adding Category --}}
+            <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form method="POST" action="{{ route('admin.doctors-categories.store') }}">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addCategoryModalLabel">Add Doctor Category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group mb-3">
+                                    <label for="categoryName">Category Name</label>
+                                    <input type="text" class="form-control" name="name" id="categoryName" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Add Category</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

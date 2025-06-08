@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\AdminController;
 /*
 | Developed by Engr. Md. Mominul Islam Shizan
 | Software Engineer
@@ -26,11 +27,21 @@ Route::get('/staff', [HomeController::class, 'staff'])->name('staff');
 Route::get('/shareholders', [HomeController::class, 'shareholders'])->name('shareholders');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('medicare')->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard');
     })->name('admin.dashboard');
     Route::get('/services', function () {})->name('admin.services');
+    Route::get('/admin/doctors', [AdminController::class, 'doctors'])->name('admin.doctors');
+    Route::get('/admin/doctors/create', [AdminController::class, 'createDoctor'])->name('admin.doctors.create');
+    Route::post('/admin/doctors', [AdminController::class, 'storeDoctor'])->name('admin.doctors.store');
+    Route::delete('/admin/doctors/{doctor}', [AdminController::class, 'destroy'])->name('admin.doctors.destroy');
+    Route::get('/admin/doctors/{doctor}/edit', [AdminController::class, 'editDoctor'])->name('admin.doctors.edit');
+    Route::put('/admin/doctors/{doctor}', [AdminController::class, 'updateDoctor'])->name('admin.doctors.update');
+
+    Route::get('/doctors-categories', [AdminController::class, 'doctorsCategories'])->name('admin.doctors-categories');
+    Route::post('/doctors-categories/store', [AdminController::class, 'storeDoctorCategory'])->name('admin.doctors-categories.store');
+
     Route::get('/ambulance', function () {})->name('admin.ambulance');
     Route::get('/pharmacy', function () {})->name('admin.pharmacy');
     Route::get('/users', function () {})->name('admin.users');

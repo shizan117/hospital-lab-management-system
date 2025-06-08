@@ -15,25 +15,51 @@
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
+
+
+{{--                <li class="dropdown pc-h-item d-inline-flex d-md-none">--}}
+{{--                    <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">--}}
+{{--                        <i class="ti ti-search"></i>--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-menu pc-h-dropdown drp-search">--}}
+{{--                        <form class="px-3">--}}
+{{--                            <div class="form-group mb-0 d-flex align-items-center">--}}
+{{--                                <i data-feather="search"></i>--}}
+{{--                                <input type="search" class="form-control border-0 shadow-none" placeholder="Search here...">--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+
+
+{{--                <li class="pc-h-item d-none d-md-inline-flex">--}}
+{{--                    <form class="header-search">--}}
+{{--                        <i data-feather="search" class="icon-search"></i>--}}
+{{--                        <input type="search" class="form-control" placeholder="Search here...">--}}
+{{--                    </form>--}}
+{{--                </li>--}}
+                <!-- Mobile globe icon dropdown -->
                 <li class="dropdown pc-h-item d-inline-flex d-md-none">
-                    <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i class="ti ti-search"></i>
+                    <a class="pc-head-link dropdown-toggle arrow-none m-0" target="_blank" href="/" role="button" aria-haspopup="false" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
                     </a>
-                    <div class="dropdown-menu pc-h-dropdown drp-search">
-                        <form class="px-3">
-                            <div class="form-group mb-0 d-flex align-items-center">
-                                <i data-feather="search"></i>
-                                <input type="search" class="form-control border-0 shadow-none" placeholder="Search here...">
-                            </div>
-                        </form>
-                    </div>
                 </li>
-                <li class="pc-h-item d-none d-md-inline-flex">
-                    <form class="header-search">
-                        <i data-feather="search" class="icon-search"></i>
-                        <input type="search" class="form-control" placeholder="Search here...">
-                    </form>
+
+                <!-- Desktop globe icon link -->
+                <li class="pc-h-item d-none d-md-inline-flex p-2">
+                    <a href="/" class="d-flex align-items-center text-decoration-none" target="_blank" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </a>
                 </li>
+
             </ul>
         </div>
         <!-- [Mobile Media Block end] -->

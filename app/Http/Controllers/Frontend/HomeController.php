@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Doctor;
 use Illuminate\Http\Request;
+use PhpParser\Comment\Doc;
 
 class HomeController extends Controller
 {
@@ -19,8 +21,10 @@ class HomeController extends Controller
         return view('frontend.pages.services');
     }
 
-    public function doctors(){
-        return view('frontend.pages.doctors');
+    public function doctors()
+    {
+        $doctors = Doctor::all();
+        return view('frontend.pages.doctors', compact('doctors'));
     }
     public function ambulance(){
         return view('frontend.pages.ambulance');
