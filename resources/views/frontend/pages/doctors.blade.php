@@ -1,7 +1,9 @@
 @extends('frontend.layouts.master')
+
 @section('title')
     Doctors Page
 @endsection
+
 @section('content')
     <style>
         .doctor-tabs {
@@ -77,19 +79,24 @@
                             <div class="row g-3">
                                 <!-- Dynamic Doctor Cards -->
                                 @foreach ($doctors as $doctor)
-                                    <div class="col-md-6 col-lg-4" data-category="{{ $doctor->specialty }}">
+                                    <div class="col-md-6 col-lg-4" data-category="{{ $doctor->category ? strtolower(str_replace(' ', '-', $doctor->category->name)) : 'uncategorized' }}">
                                         <div class="card doctor-card h-100 border rounded shadow-sm" style="font-size: 14px;">
                                             <img src="{{ asset('frontend_assets/img/' . ($doctor->image ?: 'doctor1.jpg')) }}" class="card-img-top doctor-img" alt="{{ $doctor->name }}" style="height: 180px; object-fit: cover;">
                                             <div class="card-body py-2 px-3">
-                                                <h6 class="card-title mb-1">{{ $doctor->name }}</h6>
+                                                <h6 class="card-title mb-1">
+                                                    <strong>{{ $doctor->name }}</strong>
+                                                    <span class="badge bg-success ms-2" style="font-size: 11px;">{{ $doctor->experience }} yrs exp</span>
+                                                </h6>
+
                                                 <span class="badge specialty-badge mb-1">{{ $doctor->specialty }}</span>
-                                                <p class="card-text text-muted mb-1" style="font-size: 13px;">{{ $doctor->qualification }}, {{ $doctor->experience }} years experience</p>
-                                                <p class="card-text mb-2" style="font-size: 13px;">{{ $doctor->description }}</p>
+                                                <p class="card-text  mb-1" style="font-size: 13px;">{{ $doctor->qualification }}</p>
+                                                <p class="card-text mb-2" style="font-size: 13px;font-weight: 900;">{{ $doctor->description }}</p>
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <a href="#" class="btn btn-sm btn-outline-primary px-2 py-1" style="font-size: 12px;">View</a>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 @endforeach
                             </div> <!-- /.row -->
@@ -119,21 +126,11 @@
                                     <li class="col-6 col-md-12">
                                         <a class="nav-link active border rounded text-center py-2" href="#" data-filter="all">All Doctors</a>
                                     </li>
-                                    <li class="col-6 col-md-12">
-                                        <a class="nav-link border rounded text-center py-2" href="#" data-filter="pathology">Pathologists</a>
-                                    </li>
-                                    <li class="col-6 col-md-12">
-                                        <a class="nav-link border rounded text-center py-2" href="#" data-filter="radiology">Radiologists</a>
-                                    </li>
-                                    <li class="col-6 col-md-12">
-                                        <a class="nav-link border rounded text-center py-2" href="#" data-filter="microbiology">Microbiologists</a>
-                                    </li>
-                                    <li class="col-6 col-md-12">
-                                        <a class="nav-link border rounded text-center py-2" href="#" data-filter="biochemistry">Biochemists</a>
-                                    </li>
-                                    <li class="col-6 col-md-12">
-                                        <a class="nav-link border rounded text-center py-2" href="#" data-filter="cardiology">Cardiologists</a>
-                                    </li>
+                                    @foreach ($categories as $category)
+                                        <li class="col-6 col-md-12">
+                                            <a class="nav-link border rounded text-center py-2" href="#" data-filter="{{ strtolower(str_replace(' ', '-', $category->name)) }}">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -163,7 +160,8 @@
                     // Filter doctors
                     const doctorCards = document.querySelectorAll('[data-category]');
                     doctorCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        const cardCategory = card.getAttribute('data-category').toLowerCase().replace(' ', '-');
+                        if (filter === 'all' || cardCategory === filter) {
                             card.style.display = 'block';
                         } else {
                             card.style.display = 'none';

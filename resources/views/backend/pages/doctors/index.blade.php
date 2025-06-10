@@ -40,7 +40,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $doctor->name }}</td>
-                                <td>{{ $doctor->DoctorsCategory?->name ?? 'N/A' }}</td>
+                                <td>{{ $doctor->Category?->name ?? 'N/A' }}</td>
                                 <td>{{ $doctor->specialty }}</td>
                                 <td>{{ $doctor->qualification }}</td>
                                 <td>{{ $doctor->experience }} yrs</td>

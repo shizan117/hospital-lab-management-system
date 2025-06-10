@@ -78,7 +78,7 @@
                         <li class="pc-item"><a class="pc-link {{ request()->routeIs('admin.doctors') ? 'active' : '' }}" href="{{ route('admin.doctors') }}"><span class="pc-micon"><i class="fas fa-list-ul"></i></span>Doctor List</a></li>
                         <li class="pc-item"><a class="pc-link {{ request()->routeIs('admin.doctors.create') ? 'active' : '' }}" href="{{ route('admin.doctors.create') }}"><span class="pc-micon"><i class="fas fa-user-plus"></i></span>Add Doctor</a></li>
                         <li class="pc-item">
-                            <a class="pc-link {{ request()->routeIs('admin.doctors-categories') ? 'active' : '' }}" href="{{ route('admin.doctors-categories') }}">
+                            <a class="pc-link {{ request()->routeIs('admin.doctors_categories') ? 'active' : '' }}" href="{{ route('admin.doctors_categories') }}">
                                 <span class="pc-micon"><i class="fas fa-tags"></i></span>Doctor Categories
                             </a>
                         </li>

@@ -39,8 +39,9 @@ Route::prefix('medicare')->group(function () {
     Route::get('/admin/doctors/{doctor}/edit', [AdminController::class, 'editDoctor'])->name('admin.doctors.edit');
     Route::put('/admin/doctors/{doctor}', [AdminController::class, 'updateDoctor'])->name('admin.doctors.update');
 
-    Route::get('/doctors-categories', [AdminController::class, 'doctorsCategories'])->name('admin.doctors-categories');
-    Route::post('/doctors-categories/store', [AdminController::class, 'storeDoctorCategory'])->name('admin.doctors-categories.store');
+    Route::get('/doctors-categories', [AdminController::class, 'doctorsCategories'])->name('admin.doctors_categories');
+    Route::post('/doctors-categories/save', [AdminController::class, 'saveDoctorCategory'])->name('admin.doctors_categories.save');
+    Route::delete('/doctors-categories/{id}', [AdminController::class, 'destroyDoctorCategory'])->name('admin.doctors_categories.destroy');
 
     Route::get('/ambulance', function () {})->name('admin.ambulance');
     Route::get('/pharmacy', function () {})->name('admin.pharmacy');

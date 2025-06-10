@@ -132,20 +132,40 @@ class AdminController extends Controller
 
     public function doctorsCategories()
     {
-        $categories = DoctorsCategory::latest()->get();
+        $categories = DoctorsCategory::all();
         return view('backend.pages.doctors.doctors_categories', compact('categories'));
     }
 
-    public function storeDoctorCategory(Request $request)
+    public function saveDoctorCategory(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'id' => 'nullable|integer', // Optional ID for updates
         ]);
 
-        DoctorsCategory::create([
-            'name' => $request->name
-        ]);
+        if ($request->id) {
+            // Update existing category
+            $category = DoctorsCategory::findOrFail($request->id);
+            $category->update([
+                'name' => $request->name
+            ]);
+            $message = 'Category updated successfully!';
+        } else {
+            // Create new category
+            DoctorsCategory::create([
+                'name' => $request->name
+            ]);
+            $message = 'Category added successfully!';
+        }
 
-        return redirect()->back()->with('success', 'Category added successfully!');
+        return redirect()->route('admin.doctors_categories')->with('success', $message);
+    }
+
+    public function destroyDoctorCategory($id)
+    {
+        $category = DoctorsCategory::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('admin.doctors_categories')->with('success', 'Category deleted successfully!');
     }
 }

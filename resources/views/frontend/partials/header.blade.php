@@ -122,7 +122,7 @@
 </style>
 
 <header>
-    <div class="logo"> <a class="navbar-brand d-flex align-items-center" href="{{route('home')}}">
+    <div class="logo"> <a style="    color: var(--primary-color) !important;" class="navbar-brand d-flex align-items-center" href="{{route('home')}}">
             <img src="{{asset('frontend_assets')}}/img/logo.png" alt="Medicare Diagnostic Lab Logo" height="35" class="me-2">
             Medicare Diagnostic Lab
         </a></div>

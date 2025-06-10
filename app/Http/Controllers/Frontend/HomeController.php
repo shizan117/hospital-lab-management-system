@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Doctor;
+use App\Models\Backend\DoctorsCategory;
 use Illuminate\Http\Request;
 use PhpParser\Comment\Doc;
 
@@ -23,8 +24,9 @@ class HomeController extends Controller
 
     public function doctors()
     {
-        $doctors = Doctor::all();
-        return view('frontend.pages.doctors', compact('doctors'));
+        $doctors = Doctor::with('category')->get(); // Eager load the category relationship
+        $categories = DoctorsCategory::all();
+        return view('frontend.pages.doctors', compact('doctors', 'categories'));
     }
     public function ambulance(){
         return view('frontend.pages.ambulance');
