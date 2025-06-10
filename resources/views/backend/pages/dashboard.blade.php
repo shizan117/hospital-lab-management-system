@@ -30,8 +30,15 @@
                 <p>You are logged in as <strong>Staff</strong>.</p>
         @endif
 
+            <div class="notice-bar bg-danger text-white mt-3 mb-4" role="alert">
+                <div class="scroll-text">
+                    🔧 মেডিকেয়ার সফটওয়্যারের উন্নয়ন কার্যক্রম চলমান রয়েছে। শিগগিরই নতুন ফিচার যুক্ত করা হবে যা আপনার ম্যানেজমেন্ট সিস্টেমকে আরও সহজ ও কার্যকর করে তুলবে।
+                </div>
+            </div>
 
-        <!-- [ Main Content ] start -->
+
+
+            <!-- [ Main Content ] start -->
             <div class="row">
                 <!-- [ sample-page ] start -->
                 <div class="col-md-6 col-xl-3">
@@ -308,5 +315,36 @@
             background-color: transparent !important;
             color: #4A4A4A !important;
         }
+
+        .notice-bar {
+            position: relative;
+            overflow: hidden;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .scroll-text {
+            white-space: nowrap;
+            display: inline-block;
+            position: absolute;
+            animation: scroll-left 25s linear infinite;
+            font-weight: 900;
+
+        }
+
+        @keyframes scroll-left {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
+            }
+        }
+
+
     </style>
 @endsection
