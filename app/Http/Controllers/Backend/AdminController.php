@@ -186,9 +186,11 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($userId);
         $roles = Role::all();
+        $allUsers = User::where('id', '!=', $userId)->get(); // for dropdown copy-from
 
-        return view('backend.pages.settings.set_permission', compact('user', 'roles'));
+        return view('backend.pages.settings.set_permission', compact('user', 'roles', 'allUsers'));
     }
+
 
 // Store updated permissions
     public function savePermissionsForUser(Request $request, $userId)
