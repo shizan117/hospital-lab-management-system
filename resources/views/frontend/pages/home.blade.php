@@ -16,7 +16,7 @@
                 <div class="bg-white text-dark rounded-4 p-4 shadow-sm">
                     <h5 class="fw-bold mb-3 text-center">যোগাযোগ করুন</h5>
                     <p class="mb-2"><strong>📍 ঠিকানা:</strong> মেডিকেয়ার ডায়াগনস্টিক ল্যাব, গোয়ালন্দ, রাজবাড়ী</p>
-                    <p class="mb-2"><strong>📞 ফোন:</strong> <a href="tel:+8801316131328" class="text-decoration-none text-primary">01316-****</a></p>
+                    <p class="mb-2"><strong>📞 ফোন:</strong> <a href="tel:+8801316131328" class="text-decoration-none text-primary">01316131328</a></p>
                     <p class="mb-2"><strong>📧 ইমেইল:</strong> <a href="mailto:info@medicarebd.com" class="text-decoration-none text-primary">info@medicarebd.com</a></p>
                     <p class="mb-0"><strong>🔗 ফেসবুক:</strong> <a href="https://www.facebook.com/jannatul.maliha.568" target="_blank" class="text-decoration-none text-primary">গোয়ালন্দ মেডিকেয়ার ডায়াগনস্টিক ল্যাব</a></p>
                 </div>
@@ -177,7 +177,7 @@
                     <i class="fas fa-phone-alt fa-2x me-3"></i>
                     <div>
                         <h5 class="mb-0">Call Us</h5>
-                        <p class="mb-0"> 01316-***</p>
+                        <p class="mb-0">+8801316131328</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">

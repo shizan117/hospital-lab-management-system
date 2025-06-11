@@ -35,7 +35,7 @@
                 <h5 class="text-white mb-4">Contact Info</h5>
                 <ul class="list-unstyled text-white-50">
                     <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Main Dhaka - Khulna High Way, Rajbari 7710</li>
-                    <li class="mb-2"><i class="fas fa-phone-alt me-2"></i> 01316-****</li>
+                    <li class="mb-2"><i class="fas fa-phone-alt me-2"></i><a href="tel:+8801316131328" class="text-decoration-none text-primary">01316131328</a></li>
                     <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@medicaregoalanda.com</li>
                 </ul>
             </div>
