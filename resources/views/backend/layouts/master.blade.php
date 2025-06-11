@@ -69,5 +69,6 @@
 <!-- [ Main Content ] start -->
 @yield('script')
 @yield('style')
+@stack('scripts')
 </body>
 </html>

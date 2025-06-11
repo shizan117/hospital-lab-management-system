@@ -48,7 +48,21 @@ Route::prefix('medicare')->group(function () {
     Route::get('/users', function () {})->name('admin.users');
     Route::get('/staff', function () {})->name('admin.staff');
     Route::get('/shareholders', function () {})->name('admin.shareholders');
-    Route::get('/settings', function () {})->name('admin.settings');
+
+    Route::get('/settings',[AdminController::class, 'adminSettings'])->name('admin.settings');
+    //Route::get('/settings/role/{id}/permission', [AdminController::class, 'setRolePermission'])->name('admin.role.permission');
+    Route::post('/settings/role/{id}/permission', [AdminController::class, 'storeRolePermission'])->name('admin.role.permission.store');
+    Route::get('/settings/role-permission', [AdminController::class, 'setRolePermission'])->name('admin.role.permission.index');
+   // Show user list
+    Route::get('/settings/user-selection', [AdminController::class, 'selectUser'])->name('admin.user.index');
+
+// Show permission form for one user
+    Route::get('/settings/user/{id}/permissions', [AdminController::class, 'assignPermissionsToUser'])->name('admin.role.permission.for.user');
+
+// Store updated permissions
+    Route::post('/settings/user/{id}/permissions', [AdminController::class, 'savePermissionsForUser'])->name('admin.role.permission.save.for.user');
+
+
     Route::post('/logout', function () {})->name('admin.logout');
     Route::get('/support', function () {})->name('admin.support');
 });

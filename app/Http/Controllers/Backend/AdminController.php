@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Doctor;
 use App\Models\Backend\DoctorsCategory;
+use App\Models\Backend\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -168,4 +170,80 @@ class AdminController extends Controller
 
         return redirect()->route('admin.doctors_categories')->with('success', 'Category deleted successfully!');
     }
+
+    public function adminSettings()
+    {
+        $roles = Role::all(); // Fetch all roles from the DB
+        return view('backend.pages.settings.index', compact('roles'));
+    }
+     public function selectUser()
+        {
+            $users = User::all();
+            return view('backend.pages.settings.users', compact('users'));
+        }
+// Show form for a single user
+    public function assignPermissionsToUser($userId)
+    {
+        $user = User::findOrFail($userId);
+        $roles = Role::all();
+
+        return view('backend.pages.settings.set_permission', compact('user', 'roles'));
+    }
+
+// Store updated permissions
+    public function savePermissionsForUser(Request $request, $userId)
+    {
+        $user = User::findOrFail($userId);
+        $roleIds = $request->input('role_ids', []);
+        $user->role_ids = json_encode(array_map('intval', $roleIds)); // ensure it's int
+        $user->save();
+
+        return redirect()->back()->with('success', 'Permissions updated for user.');
+    }
+
+
+
+    public function setRolePermission()
+    {
+        $roles = Role::all();;
+        $users = User::all(); // You may filter this as needed
+        return view('backend.pages.settings.set_permission', compact('roles', 'users'));
+    }
+
+    public function storeRolePermission(Request $request, $roleId)
+    {
+        $selectedUserIds = $request->input('user_ids', []); // array of user IDs that should have this role
+
+        $allUsers = User::all(); // or apply filters if needed
+
+        foreach ($allUsers as $user) {
+            $existingRoles = json_decode($user->role_ids ?? '[]', true);
+
+            // Ensure it's always an array
+            if (!is_array($existingRoles)) {
+                $existingRoles = [];
+            }
+
+            // If this user was selected in the form
+            if (in_array($user->id, $selectedUserIds)) {
+                if (!in_array($roleId, $existingRoles)) {
+                    $existingRoles[] = $roleId; // Add role
+                }
+            } else {
+                // Remove role if unchecked
+                $existingRoles = array_filter($existingRoles, function ($r) use ($roleId) {
+                    return $r != $roleId;
+                });
+            }
+
+            // Save updated role_ids JSON
+            $user->role_ids = json_encode(array_values($existingRoles)); // reindex to avoid gaps
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Permissions updated successfully.');
+    }
+
+
+
 }

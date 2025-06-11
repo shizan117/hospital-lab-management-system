@@ -25,6 +25,7 @@ class User extends Authenticatable
         'phone',
         'otp_code',
         'otp_expires_at',
+        'role_ids',
     ];
 
     protected $casts = [

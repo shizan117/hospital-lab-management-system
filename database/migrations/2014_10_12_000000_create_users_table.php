@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->string('user_type')->default('customer'); // customer, admin, staff, etc.
+            $table->string('user_type')->default('new'); // customer, admin, staff, etc.
+            $table->json('role_ids')->nullable();
             $table->string('otp_code')->nullable();
             $table->timestamp('otp_expires_at')->nullable();
 
