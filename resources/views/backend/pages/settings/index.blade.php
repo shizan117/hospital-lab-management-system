@@ -26,6 +26,21 @@
                     </div>
                 </div>
 
+                {{-- Setup Staff Card --}}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title">Add New Staff</h5>
+                            <p class="card-text text-muted">
+                                Create and manage staff accounts.
+                            </p>
+                            <a href="{{ route('admin.staff.index') }}" class="btn btn-success mt-auto">
+                                Manage Staff
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 {{-- More cards like Website Settings, User Setup, etc. will go here --}}
             </div>
 

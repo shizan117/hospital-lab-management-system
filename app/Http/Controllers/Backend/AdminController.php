@@ -7,6 +7,7 @@ use App\Models\Backend\DoctorsCategory;
 use App\Models\Backend\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -179,7 +180,7 @@ class AdminController extends Controller
      public function selectUser()
         {
             $users = User::all();
-            return view('backend.pages.settings.users', compact('users'));
+            return view('backend.pages.settings.Setup_Role_Permission.users', compact('users'));
         }
 // Show form for a single user
     public function assignPermissionsToUser($userId)
@@ -188,7 +189,7 @@ class AdminController extends Controller
         $roles = Role::all();
         $allUsers = User::where('id', '!=', $userId)->get(); // for dropdown copy-from
 
-        return view('backend.pages.settings.set_permission', compact('user', 'roles', 'allUsers'));
+        return view('backend.pages.settings.Setup_Role_Permission.set_permission', compact('user', 'roles', 'allUsers'));
     }
 
 
@@ -209,7 +210,7 @@ class AdminController extends Controller
     {
         $roles = Role::all();;
         $users = User::all(); // You may filter this as needed
-        return view('backend.pages.settings.set_permission', compact('roles', 'users'));
+        return view('backend.pages.settings.Setup_Role_Permission.set_permission', compact('roles', 'users'));
     }
 
     public function storeRolePermission(Request $request, $roleId)
@@ -247,5 +248,70 @@ class AdminController extends Controller
     }
 
 
+
+
+
+    // staff task
+    public function staffIndex()
+    {
+        $users = User::all();
+        return view('backend.pages.settings.staff.index', compact('users'));
+    }
+
+    public function staffCreate()
+    {
+        return view('backend.pages.settings.staff.create');
+    }
+
+    public function staffStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('admin.staff.index')->with('success', 'Staff created successfully.');
+    }
+
+    public function staffEdit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('backend.pages.settings.staff.edit', compact('user'));
+    }
+
+    public function staffUpdate(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:6',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        return redirect()->route('admin.staff.index')->with('success', 'Staff updated successfully.');
+    }
+
+    public function staffDestroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.staff.index')->with('success', 'Staff deleted successfully.');
+    }
 
 }

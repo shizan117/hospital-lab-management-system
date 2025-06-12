@@ -27,6 +27,8 @@ Route::get('/staff', [HomeController::class, 'staff'])->name('staff');
 Route::get('/shareholders', [HomeController::class, 'shareholders'])->name('shareholders');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
+
+Route::middleware(['auth'])->group(function () {
 Route::prefix('medicare')->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard');
@@ -58,13 +60,23 @@ Route::prefix('medicare')->group(function () {
 
 // Show permission form for one user
     Route::get('/settings/user/{id}/permissions', [AdminController::class, 'assignPermissionsToUser'])->name('admin.role.permission.for.user');
-
 // Store updated permissions
     Route::post('/settings/user/{id}/permissions', [AdminController::class, 'savePermissionsForUser'])->name('admin.role.permission.save.for.user');
+
+// Staff Management Routes (No New Controller Required)
+    Route::get('/settings/staff-list', [AdminController::class, 'staffIndex'])->name('admin.staff.index');
+    Route::get('/settings/staff/create', [AdminController::class, 'staffCreate'])->name('admin.staff.create');
+    Route::post('/settings/staff/store', [AdminController::class, 'staffStore'])->name('admin.staff.store');
+    Route::get('/settings/staff/{id}/edit', [AdminController::class, 'staffEdit'])->name('admin.staff.edit');
+    Route::put('/settings/staff/{id}', [AdminController::class, 'staffUpdate'])->name('admin.staff.update');
+    Route::delete('/settings/staff/{id}', [AdminController::class, 'staffDestroy'])->name('admin.staff.destroy');
 
 
     Route::post('/logout', function () {})->name('admin.logout');
     Route::get('/support', function () {})->name('admin.support');
+});
+
+
 });
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
