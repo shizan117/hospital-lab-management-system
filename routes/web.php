@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\AmbulanceController;
 /*
 | Developed by Engr. Md. Mominul Islam Shizan
 | Software Engineer
@@ -26,6 +27,7 @@ Route::get('/management', [HomeController::class, 'management'])->name('manageme
 Route::get('/staff', [HomeController::class, 'staff'])->name('staff');
 Route::get('/shareholders', [HomeController::class, 'shareholders'])->name('shareholders');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/ambulance-request', [AmbulanceController::class, 'store'])->name('ambulance.request');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -46,7 +48,12 @@ Route::prefix('medicare')->group(function () {
     Route::post('/doctors-categories/save', [AdminController::class, 'saveDoctorCategory'])->name('admin.doctors_categories.save');
     Route::delete('/doctors-categories/{id}', [AdminController::class, 'destroyDoctorCategory'])->name('admin.doctors_categories.destroy');
 
-    Route::get('/ambulance', function () {})->name('admin.ambulance');
+    Route::get('/admin/ambulance', [AmbulanceController::class, 'index'])->name('admin.ambulance');
+    Route::post('/admin/ambulance/{id}/status', [AmbulanceController::class, 'updateStatus'])->name('admin.ambulance.updateStatus');
+
+
+
+
     Route::get('/pharmacy', function () {})->name('admin.pharmacy');
     Route::get('/users', function () {})->name('admin.users');
     Route::get('/staff', function () {})->name('admin.staff');

@@ -4,11 +4,41 @@
 @endsection
 
 @section('content')
-    <!-- Ambulance Service Section -->
+    <!-- AmbulanceRequest Service Section -->
     <section class="ambulance-section">
         <div class="container">
+
+            {{-- Success Message --}}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            {{-- Error Message --}}
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            {{-- Validation Errors --}}
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Oops!</strong> Please fix the following errors:
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="row g-4">
-                <!-- Left Column: Ambulance Info -->
+                <!-- Left Column: Info -->
                 <div class="col-lg-7">
                     <div class="ambulance-content">
                         <h2 class="ambulance-title">Ambulance Service in Goalanda, Rajbari | Call Us Now</h2>
@@ -19,7 +49,7 @@
                         </div>
                         <img src="{{ asset('frontend_assets/img/ambulance.jpg') }}" class="ambulance-image" alt="Ambulance">
                         <p class="mt-3">
-                            Goalanda is a upazila in Rajbari, known for its strategic location along the Dhaka-Khulna Highway. We provide reliable ambulance services to ensure timely medical transportation for the residents of Goalanda and surrounding areas. Call us for an ambulance to connect with you
+                            We provide reliable ambulance services to ensure timely medical transportation for the residents of Goalanda and surrounding areas. Call us for an ambulance to connect with you.
                         </p>
                     </div>
                 </div>
@@ -28,45 +58,54 @@
                 <div class="col-lg-5">
                     <div class="request-form">
                         <h4>Request an Ambulance</h4>
-                        <form action="" method="POST">
+                        <form action="{{ route('ambulance.request') }}" method="POST">
                             @csrf
+
                             <div class="mb-3">
                                 <label for="from" class="form-label">From</label>
-                                <input type="text" class="form-control" id="from" name="from" placeholder="Example: Goalanda" required>
+                                <input type="text" class="form-control" id="from" name="from" value="{{ old('from') }}" placeholder="Example: Goalanda" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="destination" class="form-label">Destination</label>
-                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Example: Medicare Diagnostic Lab Hospital" required>
+                                <input type="text" class="form-control" id="destination" name="destination" value="{{ old('destination') }}" placeholder="Example: Medicare Diagnostic Lab Hospital" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="ambulance_type" class="form-label">Ambulance Type</label>
                                 <select class="form-control" id="ambulance_type" name="ambulance_type" required>
                                     <option value="">Select</option>
-                                    <option value="basic">Basic Life Support</option>
-                                    <option value="advanced">Advanced Life Support</option>
-                                    <option value="icu">ICU Ambulance</option>
+                                    <option value="basic" {{ old('ambulance_type') == 'basic' ? 'selected' : '' }}>Basic Life Support</option>
+                                    <option value="advanced" {{ old('ambulance_type') == 'advanced' ? 'selected' : '' }}>Advanced Life Support</option>
+                                    <option value="icu" {{ old('ambulance_type') == 'icu' ? 'selected' : '' }}>ICU Ambulance</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="date" class="form-label">Date</label>
-                                <input type="date" class="form-control" id="date" name="date" required>
+                                <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}" required>
                             </div>
+
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="round_trip" name="round_trip">
+                                <input type="checkbox" class="form-check-input" id="round_trip" name="round_trip" {{ old('round_trip') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="round_trip">I need a round trip</label>
                             </div>
+
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Your name" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone</label>
                                 <div class="input-group">
                                     <span class="input-group-text">+880</span>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="1234567890" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" placeholder="1XXXXXXXXX" required>
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary">Send Ambulance Request</button>
+
                             <p class="form-note text-center">
                                 <i class="fas fa-info-circle"></i> One of our agents will get back to you within 30 minutes with the ambulance update.
                             </p>
@@ -78,12 +117,18 @@
     </section>
 @endsection
 
-
 @section('style')
     <style>
+        @media (max-width: 767.98px) {
+            .ambulance-image {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+
         .ambulance-section {
             background-color: #f8f9fa;
-            padding: 60px 0;
+            padding: 10px 0;
         }
         .ambulance-title {
             color: #2c3e50;
@@ -91,10 +136,10 @@
             margin-bottom: 15px;
         }
         .emergency-number {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #dc3545; /* Red for emphasis */
-            margin-bottom: 20px;
+            color: #dc3545;
+            margin-bottom: 10px;
         }
         .emergency-number i {
             margin-right: 10px;
@@ -106,7 +151,7 @@
             padding: 30px;
         }
         .ambulance-content p {
-            color: #6c757d;
+            color: black;
             font-size: 1rem;
             margin-bottom: 20px;
         }
