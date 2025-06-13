@@ -60,8 +60,7 @@ class DatabaseSeeder extends Seeder
             'doctors_category_id' => $category1->id,
             'specialty' => 'ডায়াবেটিস ও শিশু রোগের চিকিৎসক',
             'qualification' => 'এমবিবিএস, এফসিজিপি, সিসিডি (বারডেম), সিএমইউ
-এসএমও, ডিপার্টমেন্ট অব জেনারেল এন্ড কলোরেক্টাল সার্জারী বাংলাদেশ স্পেশালাইজড হাসপাতাল, ঢাকা।',
-            'experience' => '10',
+            এসএমও, ডিপার্টমেন্ট অব জেনারেল এন্ড কলোরেক্টাল সার্জারী বাংলাদেশ স্পেশালাইজড হাসপাতাল, ঢাকা।',
             'description' => 'প্রতি বুধবার ও শুক্রবার',
             'image' => 'doctor.png', // or you can use a demo image path like 'doctors/jamil.jpg
         ]);

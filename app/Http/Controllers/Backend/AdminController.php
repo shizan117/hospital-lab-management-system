@@ -31,7 +31,6 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'specialty' => 'required|string|max:255',
             'qualification' => 'required|string|max:255',
-            'experience' => 'required|integer',
             'description' => 'required|string',
             'doctors_category_id' => 'nullable|exists:doctors_categories,id',
 
@@ -42,7 +41,7 @@ class AdminController extends Controller
             'name',
             'specialty',
             'qualification',
-            'experience',
+
             'description',
             'doctors_category_id'
         ]);
@@ -77,7 +76,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'specialty' => 'required|string|max:255',
             'qualification' => 'required|string|max:255',
-            'experience' => 'required|integer',
+
             'description' => 'required|string',
             'doctors_category_id' => 'nullable|exists:doctors_categories,id',
             'image' => 'nullable|image|max:2048', // max 2MB
@@ -87,7 +86,6 @@ class AdminController extends Controller
             'name',
             'specialty',
             'qualification',
-            'experience',
             'description',
             'doctors_category_id'
         ]);
@@ -110,6 +108,17 @@ class AdminController extends Controller
 
         return redirect()->route('admin.doctors')->with('success', 'Doctor updated successfully.');
     }
+    public function toggleDoctorStatus($id)
+    {
+        $doctor = Doctor::findOrFail($id);
+        $doctor->status = $doctor->status ? 0 : 1;
+        $doctor->save();
+
+        $statusText = $doctor->status ? 'Active' : 'Inactive';
+
+        return redirect()->back()->with('success', "Doctor is now {$statusText}.");
+    }
+
 
 
     public function destroy($id)
@@ -135,7 +144,8 @@ class AdminController extends Controller
 
     public function doctorsCategories()
     {
-        $categories = DoctorsCategory::all();
+        $categories = DoctorsCategory::orderBy('updated_at', 'desc')->get();
+
         return view('backend.pages.doctors.doctors_categories', compact('categories'));
     }
 

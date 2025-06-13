@@ -75,11 +75,6 @@
                                         <input type="text" name="qualification" value="{{ old('qualification') }}" style="width: 100%; padding: 8px; border: 1px solid #28a745; border-radius: 4px;" required>
                                     </div>
 
-                                    <!-- Experience -->
-                                    <div>
-                                        <label style="font-weight: 600; color: #6c757d;">Experience (years) <span style="color: #dc3545;">*</span></label>
-                                        <input type="number" name="experience" value="{{ old('experience') }}" style="width: 100%; padding: 8px; border: 1px solid #28a745; border-radius: 4px;" required min="0">
-                                    </div>
 
                                     <!-- Description -->
                                     <div>

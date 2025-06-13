@@ -40,6 +40,7 @@ Route::prefix('medicare')->group(function () {
     Route::delete('/admin/doctors/{doctor}', [AdminController::class, 'destroy'])->name('admin.doctors.destroy');
     Route::get('/admin/doctors/{doctor}/edit', [AdminController::class, 'editDoctor'])->name('admin.doctors.edit');
     Route::put('/admin/doctors/{doctor}', [AdminController::class, 'updateDoctor'])->name('admin.doctors.update');
+    Route::put('/admin/doctors/{doctor}/toggle-status', [AdminController::class, 'toggleDoctorStatus'])->name('admin.doctors.toggleStatus');
 
     Route::get('/doctors-categories', [AdminController::class, 'doctorsCategories'])->name('admin.doctors_categories');
     Route::post('/doctors-categories/save', [AdminController::class, 'saveDoctorCategory'])->name('admin.doctors_categories.save');

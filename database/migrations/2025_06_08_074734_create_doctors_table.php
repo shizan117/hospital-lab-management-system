@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('doctors_category_id')->nullable()->constrained('doctors_categories')->nullOnDelete();
             $table->string('specialty');
             $table->string('qualification');
-            $table->integer('experience');
+            $table->integer('status')->default(1);
             $table->text('description');
             $table->string('image')->nullable();
             $table->timestamps();

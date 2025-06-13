@@ -23,7 +23,7 @@
                         <tr>
                             <th>#</th>
                             <th>Category Name</th>
-                            <th>Created At</th>
+                            <th>Updated At</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -32,7 +32,8 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->created_at->format('d M Y') }}</td>
+                                <td>{{ $category->updated_at->format('d M Y h:i:s A') }}</td>
+
                                 <td>
                                     <div class="d-flex gap-2">
                                         <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#addCategoryModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" onclick="editCategory(this)">

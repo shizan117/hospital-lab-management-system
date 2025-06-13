@@ -102,14 +102,7 @@
                                         @endif
                                     </div>
 
-                                    <!-- Experience -->
-                                    <div>
-                                        <label style="font-weight: 600; color: #6c757d;">Experience (years) <span style="color: #dc3545;">*</span></label>
-                                        <input type="number" name="experience" value="{{ old('experience', $doctor->experience) }}" style="width: 100%; padding: 8px; border: 1px solid #007bff; border-radius: 4px; @error('experience') border-color: #dc3545; @enderror" required min="0">
-                                        @error('experience')
-                                        <div style="color: #dc3545; font-size: 12px;">{{ $message }}</div>
-                                        @endif
-                                    </div>
+
 
                                     <!-- Description -->
                                     <div>

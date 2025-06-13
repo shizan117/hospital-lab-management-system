@@ -24,10 +24,11 @@ class HomeController extends Controller
 
     public function doctors()
     {
-        $doctors = Doctor::with('category')->get(); // Eager load the category relationship
+        $doctors = Doctor::with('category')->where('status', 1)->get(); // Only active doctors
         $categories = DoctorsCategory::all();
         return view('frontend.pages.doctors', compact('doctors', 'categories'));
     }
+
     public function ambulance(){
         return view('frontend.pages.ambulance');
     }
