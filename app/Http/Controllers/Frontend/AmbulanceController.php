@@ -3,9 +3,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\AmbulanceRequest;
-
+use Illuminate\Support\Facades\Log;
 class AmbulanceController extends Controller
 {
     // frontend
@@ -70,4 +71,40 @@ class AmbulanceController extends Controller
 
         return redirect()->back()->with('success', 'Ambulance request status updated successfully.');
     }
+
+
+    public function latest()
+    {
+        $latest = AmbulanceRequest::where('status', '!=', 'confirmed')
+            ->latest()
+            ->first();
+
+
+        if (!$latest) {
+//            Log::info('AmbulanceController@latest: No ambulance requests found.');
+            return response()->json(null, 404);
+        }
+
+//        Log::info('AmbulanceController@latest: Latest ambulance request fetched.', [
+//            'id' => $latest->id,
+//            'status' => $latest->status,
+//            'from' => $latest->from,
+//            'destination' => $latest->destination,
+//            'created_at' => $latest->created_at,
+//        ]);
+
+        return response()->json([
+            'id' => $latest->id,
+            'from' => $latest->from,
+            'destination' => $latest->destination,
+            'ambulance_type' => ucfirst($latest->ambulance_type),
+            'date' => Carbon::parse($latest->date)->format('d M Y'),
+            'round_trip' => $latest->round_trip ? 'Yes' : 'No',
+            'name' => $latest->name,
+            'phone' => $latest->phone,
+            'status' => $latest->status,
+            'created_at' => $latest->created_at->diffForHumans()
+        ]);
+    }
+
 }

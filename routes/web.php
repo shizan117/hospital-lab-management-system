@@ -50,6 +50,7 @@ Route::prefix('medicare')->group(function () {
 
     Route::get('/admin/ambulance', [AmbulanceController::class, 'index'])->name('admin.ambulance');
     Route::post('/admin/ambulance/{id}/status', [AmbulanceController::class, 'updateStatus'])->name('admin.ambulance.updateStatus');
+    Route::get('/admin/ambulance/latest', [AmbulanceController::class, 'latest'])->name('admin.ambulance.latest');
 
 
 
