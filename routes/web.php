@@ -52,12 +52,21 @@ Route::prefix('medicare')->group(function () {
     Route::post('/admin/ambulance/{id}/status', [AmbulanceController::class, 'updateStatus'])->name('admin.ambulance.updateStatus');
     Route::get('/admin/ambulance/latest', [AmbulanceController::class, 'latest'])->name('admin.ambulance.latest');
 
+    Route::get('/staff', [AdminController::class, 'staff'])->name('admin.staff');
+    Route::post('/staff', [AdminController::class, 'storeStaff'])->name('admin.staff_store');
+    Route::get('/staff/{id}/edit', [AdminController::class, 'editStaff'])->name('admin.staff.edit');
+    Route::put('/staff/{id}', [AdminController::class, 'updateStaff'])->name('admin.staff_update');
+    Route::delete('/staff/{id}', [AdminController::class, 'destroyStaff'])->name('admin.staff_destroy');
 
+    Route::get('/staff-categories', [AdminController::class, 'staffCategories'])->name('admin.staff_categories');
+    Route::post('/staff-categories/save', [AdminController::class, 'saveStaffCategory'])->name('admin.staff_categories.save');
+    Route::put('/staff-categories/{id}', [AdminController::class, 'updateStaffCategory'])->name('admin.staff_categories.update');
+    Route::delete('/staff-categories/{id}', [AdminController::class, 'destroyStaffCategory'])->name('admin.staff_categories.destroy');
 
 
     Route::get('/pharmacy', function () {})->name('admin.pharmacy');
     Route::get('/users', function () {})->name('admin.users');
-    Route::get('/staff', function () {})->name('admin.staff');
+
     Route::get('/shareholders', function () {})->name('admin.shareholders');
 
     Route::get('/settings',[AdminController::class, 'adminSettings'])->name('admin.settings');

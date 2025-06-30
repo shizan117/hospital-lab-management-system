@@ -4,110 +4,45 @@
 @endsection
 @section('content')
     <!-- Staff Section -->
-    <section class="py-5">
+    <section class="py-2">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Meet Our Team</h2>
+            <div class="text-center mb-1">
+                <h2 class="section-title" style="margin-bottom: 20px">Meet Our Team</h2>
                 <p class="lead text-muted">Skilled professionals committed to your healthcare needs</p>
             </div>
 
             <!-- Department Filter -->
-            <div class="row mb-5">
+            <div class="row mb-3">
                 <div class="col-12">
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <button class="btn btn-outline-primary active" data-filter="all">All Departments</button>
-                        <button class="btn btn-outline-primary" data-filter="pathology">Pathology</button>
-                        <button class="btn btn-outline-primary" data-filter="radiology">Radiology</button>
-                        <button class="btn btn-outline-primary" data-filter="microbiology">Microbiology</button>
-                        <button class="btn btn-outline-primary" data-filter="reception">Reception</button>
-                        <button class="btn btn-outline-primary" data-filter="phlebotomy">Phlebotomy</button>
+                        @foreach ($categories as $category)
+                            <button class="btn btn-outline-primary" data-filter="{{ strtolower(str_replace(' ', '-', $category->name)) }}">
+                                {{ $category->name }}
+                            </button>
+                        @endforeach
                     </div>
                 </div>
             </div>
 
             <!-- Staff Grid -->
             <div class="staff-grid">
-                <!-- Staff Member 1 -->
-                <div class="card staff-card" data-department="pathology">
-                    <img src="../assets/img/staff-1.jpg" class="card-img-top staff-img" alt="Pathology Technician">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Pathology</span>
-                        <h5 class="card-title mb-1">Mr. A. Hossain</h5>
-                        <p class="card-text text-muted small">Senior Lab Technician</p>
+                @forelse ($staff as $item)
+                    <div class="card staff-card" data-department="{{ strtolower(str_replace(' ', '-', $item->category->name ?? 'uncategorized')) }}">
+                        <img src="{{ $item->image ? asset('frontend_assets/img/' . $item->image) : asset('frontend_assets/img/default.jpg') }}"
+                             class="card-img-top staff-img" alt="{{ $item->name }}">
+                        <div class="card-body text-center">
+                            <span class="department-badge mb-2">{{ $item->category->name ?? 'Uncategorized' }}</span>
+                            <h5 class="card-title mb-1">{{ $item->name }}</h5>
+                            <p class="card-text text-muted small">{{ $item->position }}</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Staff Member 2 -->
-                <div class="card staff-card" data-department="radiology">
-                    <img src="../assets/img/staff-2.jpg" class="card-img-top staff-img" alt="Radiology Technician">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Radiology</span>
-                        <h5 class="card-title mb-1">Ms. R. Akter</h5>
-                        <p class="card-text text-muted small">Radiology Technician</p>
+                @empty
+                    <div class="alert alert-warning text-center" role="alert">
+                        No staff members found.
                     </div>
-                </div>
-
-                <!-- Staff Member 3 -->
-                <div class="card staff-card" data-department="microbiology">
-                    <img src="../assets/img/staff-3.jpg" class="card-img-top staff-img" alt="Microbiology Technician">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Microbiology</span>
-                        <h5 class="card-title mb-1">Ms. S. Islam</h5>
-                        <p class="card-text text-muted small">Microbiology Specialist</p>
-                    </div>
-                </div>
-
-                <!-- Staff Member 4 -->
-                <div class="card staff-card" data-department="reception">
-                    <img src="../assets/img/staff-4.jpg" class="card-img-top staff-img" alt="Reception Staff">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Reception</span>
-                        <h5 class="card-title mb-1">Ms. F. Khan</h5>
-                        <p class="card-text text-muted small">Front Desk Coordinator</p>
-                    </div>
-                </div>
-
-                <!-- Staff Member 5 -->
-                <div class="card staff-card" data-department="phlebotomy">
-                    <img src="../assets/img/staff-5.jpg" class="card-img-top staff-img" alt="Phlebotomist">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Phlebotomy</span>
-                        <h5 class="card-title mb-1">Mr. K. Rahman</h5>
-                        <p class="card-text text-muted small">Senior Phlebotomist</p>
-                    </div>
-                </div>
-
-                <!-- Staff Member 6 -->
-                <div class="card staff-card" data-department="pathology">
-                    <img src="../assets/img/staff-6.jpg" class="card-img-top staff-img" alt="Lab Technician">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Pathology</span>
-                        <h5 class="card-title mb-1">Ms. M. Sultana</h5>
-                        <p class="card-text text-muted small">Lab Technician</p>
-                    </div>
-                </div>
-
-                <!-- Staff Member 7 -->
-                <div class="card staff-card" data-department="radiology">
-                    <img src="../assets/img/staff-7.jpg" class="card-img-top staff-img" alt="Ultrasound Technician">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Radiology</span>
-                        <h5 class="card-title mb-1">Mr. S. Ali</h5>
-                        <p class="card-text text-muted small">Ultrasound Technician</p>
-                    </div>
-                </div>
-
-                <!-- Staff Member 8 -->
-                <div class="card staff-card" data-department="reception">
-                    <img src="../assets/img/staff-8.jpg" class="card-img-top staff-img" alt="Customer Service">
-                    <div class="card-body text-center">
-                        <span class="department-badge mb-2">Reception</span>
-                        <h5 class="card-title mb-1">Ms. T. Jahan</h5>
-                        <p class="card-text text-muted small">Customer Service</p>
-                    </div>
-                </div>
+                @endforelse
             </div>
-
             <!-- Staff Statistics -->
             <div class="row mt-5">
                 <div class="col-12">

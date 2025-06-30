@@ -5,10 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Doctor;
 use App\Models\Backend\DoctorsCategory;
 use App\Models\Backend\Role;
+use App\Models\Backend\Staff;
+use App\Models\Backend\StaffCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Log;
 class AdminController extends Controller
 {
     public function doctors()
@@ -322,6 +324,150 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff deleted successfully.');
+    }
+
+    public function staff()
+    {
+        $staff = Staff::with('category')->get();
+        $categories = StaffCategory::all();
+        return view('backend.pages.staff.index', compact('staff', 'categories'));
+    }
+
+
+
+    public function storeStaff(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'description' => 'required|string',
+            'staff_category_id' => 'nullable|exists:staff_categories,id',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $staffData = $request->only(['name', 'position', 'description', 'staff_category_id']);
+
+        if ($request->hasFile('image')) {
+            try {
+                $imageName = 'staff_' . time() . '.' . $request->image->extension();
+                $request->image->move(public_path('frontend_assets/img'), $imageName);
+                $staffData['image'] = $imageName;
+
+            } catch (\Exception $e) {
+
+                return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage())->withInput();
+            }
+        }
+
+        try {
+            $staff = Staff::create($staffData);
+
+            return redirect()->route('admin.staff')->with('success', 'Staff created successfully.');
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with('error', 'Failed to create staff: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    public function editStaff($id)
+    {
+        $staff = Staff::findOrFail($id);
+        $categories = StaffCategory::all();
+        return redirect()->route('admin.staff')->with(compact('staff', 'categories'));
+    }
+
+    public function updateStaff(Request $request, $id)
+    {
+        $staff = Staff::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'description' => 'required|string',
+            'staff_category_id' => 'nullable|exists:staff_categories,id',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $staffData = $request->only(['name', 'position', 'description', 'staff_category_id']);
+
+        if ($request->hasFile('image')) {
+            $oldImagePath = public_path('frontend_assets/img/' . $staff->image);
+            if (!empty($staff->image) && file_exists($oldImagePath)) {
+                @unlink($oldImagePath);
+            }
+
+            $imageName = 'staff_' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('frontend_assets/img'), $imageName);
+            $staffData['image'] = $imageName;
+        }
+
+        $staff->update($staffData);
+
+        return redirect()->route('admin.staff')->with('success', 'Staff updated successfully.');
+    }
+
+    public function destroyStaff($id)
+    {
+        $staff = Staff::findOrFail($id);
+        $imagePath = public_path('frontend_assets/img/' . $staff->image);
+        if (!empty($staff->image) && file_exists($imagePath)) {
+            @unlink($imagePath);
+        }
+        $staff->delete();
+
+        return redirect()->route('admin.staff')->with('success', 'Staff and image deleted successfully.');
+    }
+
+    public function staffCategories()
+    {
+        $categories = StaffCategory::orderBy('updated_at', 'desc')->get();
+        return redirect()->route('admin.staff')->with(compact('categories'));
+    }
+
+    public function saveStaffCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'id' => 'nullable|integer',
+        ]);
+
+
+            StaffCategory::create(['name' => $request->name]);
+            $message = 'Staff Category added successfully!';
+
+
+        return redirect()->route('admin.staff')->with('success', $message);
+    }
+    public function updateStaffCategory(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = StaffCategory::findOrFail($id);
+
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.staff')->with('success', 'Category name updated successfully!');
+    }
+    public function destroyStaffCategory($id)
+    {
+        // Find the category or fail with 404 if not found
+        $category = StaffCategory::findOrFail($id);
+
+        // Check if the category has any associated staff
+        $hasStaff = $category->staff()->exists();
+
+        if ($hasStaff) {
+            return redirect()->route('admin.staff')->with('error', 'Cannot delete category. It is associated with existing staff members.');
+        }
+
+        // If no staff, proceed with deletion
+        $category->delete();
+
+        return redirect()->route('admin.staff')->with('success', 'Category deleted successfully!');
     }
 
 }

@@ -269,19 +269,15 @@
 
 @section('style')
     <style>
-        /*.pc-content {*/
-        /*    background: linear-gradient(135deg, #F7F9FC, #EDEEF1) !important;*/
-        /*}*/
+
         .card {
-            /*background-color: #FFF8E7 !important;*/
+
             border: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
         .text-muted {
             color: #7A7A7A !important;
         }
-        /*.text-primary {*/
-        /*    color: #D4A373 !important;*/
-        /*}*/
+
         .text-success {
             color: #50C878 !important;
         }
@@ -293,8 +289,7 @@
         }
         .badge.bg-light-primary {
             background-color: rgba(212, 163, 115, 0.1) !important;
-            /*color: #D4A373 !important;*/
-            /*border-color: #D4A373 !important;*/
+
         }
         .badge.bg-light-success {
             background-color: rgba(80, 200, 120, 0.1) !important;
@@ -331,7 +326,7 @@
             white-space: nowrap;
             display: inline-block;
             position: absolute;
-            animation: scroll-left 25s linear infinite;
+            animation: scroll-left 35s linear infinite;
             font-weight: 900;
 
         }
