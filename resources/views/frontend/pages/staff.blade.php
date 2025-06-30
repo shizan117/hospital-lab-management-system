@@ -30,7 +30,10 @@
                 @forelse ($staff as $item)
                     <div class="card staff-card" data-department="{{ strtolower(str_replace(' ', '-', $item->category->name ?? 'uncategorized')) }}">
                         <img src="{{ $item->image ? asset('frontend_assets/img/' . $item->image) : asset('frontend_assets/img/default.jpg') }}"
-                             class="card-img-top staff-img" alt="{{ $item->name }}">
+                             class="card-img-top staff-img"
+                             alt="{{ $item->name }}"
+                             style="height: 200px; object-fit: cover; width: 100%;">
+
                         <div class="card-body text-center">
                             <span class="department-badge mb-2">{{ $item->category->name ?? 'Uncategorized' }}</span>
                             <h5 class="card-title mb-1">{{ $item->name }}</h5>
